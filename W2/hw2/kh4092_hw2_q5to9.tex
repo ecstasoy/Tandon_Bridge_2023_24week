@@ -1,0 +1,667 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+
+
+\usetikzlibrary{automata,positioning}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{5}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newcommand{\hmwkTitle}{HW\ \#2}
+\newcommand{\hmwkDueDate}{July 21, 2023}
+\newcommand{\hmwkClass}{Tandon CS Bridge}
+\newcommand{\hmwkClassTime}{Extended 24-week}
+\newcommand{\hmwkClassInstructor}{Ratan Dey}
+\newcommand{\hmwkAuthorName}{\textbf{Kunhua Huang}}
+\newcommand{\hmwkNYUID}{kh4092}
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\, \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{
+    \vspace{0.1in}
+    \textmd{\hmwkAuthorName}\\
+    \text{\hmwkNYUID}
+}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newcommand\logeq{\mathrel{\raisebox{.66pt}{:}}\Leftrightarrow}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    a. Solve the following questions from the Discrete Math zyBook:
+    \begin{enumerate}
+        \item Excercise 1.12.2, sections b, e
+        \begin{enumerate}
+            \item 
+                \[
+                    \begin{array}{ r l }
+                        & p \rightarrow (q \land r) \\
+                        & \neg q \\
+                        \cline{2-2}
+                        \therefore & \neg p
+                    \end{array}
+                \]
+            \item
+                \[
+                    \begin{array}{ r l }    
+                        & p \lor q \\
+                        & \neg p \lor r \\
+                        & \neg q \\
+                        \cline{2-2}
+                        \therefore & r
+                    \end{array}             
+                \]
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item 
+                \[
+                    \begin{array}{ l l l }
+                        1. & \neg q & Hypothesis \\
+                        2. & p \rightarrow (q \land r) & Hypothesis \\
+                        3. & \neg (q \land r) & Domination\ Law,\ 1,\ 2\\
+                        4. & \neg p & Modus\ Tollens,\ 2,\ 3\\
+                    \end{array}   
+                \]
+            \item 
+                \[
+                    \begin{array}{ l l l }
+                        1. & p \lor q & Hypothesis \\
+                        2. & \neg p \lor r & Hypothesis \\
+                        3. & q \lor r & Resolution,\ 1,\ 2 \\
+                        4. & \neg q & Hypothesis \\
+                        5. & r & Disjunctive\ Synllogism,\ 3,\ 4 \\
+                    \end{array}
+                \]
+        \end{enumerate}
+        \item Exercise 1.12.3, section c\\
+        \\
+        Proving the rules of inference using other rules.\\
+        \\
+        Some of the rules of inference can be proven using the other rules of inference and the laws of propositional logic.\\
+        \begin{enumerate}
+            \item One of the rules of inference is Disjunctive syllogism :\\
+                \[
+                    \begin{array}{ r l }
+                        & p \lor q \\
+                        & \neg p \\
+                        \cline{2-2}
+                        \therefore & q
+                    \end{array}  
+                \]
+                Prove that Disjunctive syllogism is valid using the laws of propositional logic and any of the other rules of inference besides Disjunctive syllogism. (Hint: you will need one of the conditional identities from the laws of propositional logic).
+
+        \end{enumerate}
+        
+        \textbf{Solution}
+        \begin{enumerate}
+            \item  
+                \[
+                    \begin{array}{ l l l }
+                        1. & p \lor q & Hypothesis \\
+                        2. & \neg p \rightarrow q & Conditional\ Identities,\ 1\\
+                        3. & \neg p & Hypothesis \\
+                        4. & q
+                    \end{array}
+                \]
+        \end{enumerate}
+        \item Excercise 1.12.5, section c, d\\
+        \\
+        Proving arguments in English are valid or invalid.\\
+        \\
+        Give the form of each argument. Then prove whether the argument is valid or invalid. For valid arguments, use the rules of inference to prove validity.\\
+        \begin{enumerate}
+            \item 
+                \[
+                    \begin{array}{ r l }
+                        & I\ will\ buy\ a\ new\ car\ and\ a\ new\ house\ if\ I\ get\ a\ job. \\
+                        & I\ am\ not\ going\ to\ get\ a\ job. \\
+                        \cline{2-2}
+                        \therefore & I\ will\ not\ buy\ a\ new\ car.
+                    \end{array}
+                \]
+            \item 
+                \[
+                    \begin{array}{ r l }
+                        & I\ will\ buy\ a\ new\ car\ and\ a\ new\ house\ only\ if\ I\ get\ a\ job. \\
+                        & I\ am\ not\ going\ to\ get\ a\ job. \\
+                        & I\ will\ buy\ a\ new\ house. \\
+                        \cline{2-2}
+                        \therefore & I\ will\ not\ buy\ a\ new\ car.
+                    \end{array}    
+                \]
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item \ \\
+                \begin{center}
+                    \textit{p:  I will buy a new car.}\\
+                    \textit{q: I will buy a new house.}\\
+                    \textit{r: I get a job}\\
+                \end{center}
+            Therefore:
+                \[
+                    \begin{array}{ r l }
+                        & r \rightarrow (p \land q) \\
+                        & \neg r \\
+                        \cline{2-2}
+                        \therefore & \neg p
+                    \end{array}
+                \]
+            \begin{proof}
+                    Suppose r = q = F, p = T
+                \[
+                    \begin{array}{ l l l }
+                        1. & r \rightarrow (p \land q) & T \\
+                        2. & \neg r & T \\
+                        \cline{2-2}
+                        3. & \neg p & F
+                    \end{array}
+                \]
+            Since all hypotheses are true and the conclusion is false, the argument is invalid.
+            \end{proof}
+            \item \ \\
+                \begin{center}
+                    \textit{p:  I will buy a new car.}\\
+                    \textit{q: I will buy a new house.}\\
+                    \textit{r: I get a job}\\
+                \end{center}
+            Therefore:
+                \[
+                    \begin{array}{ r l }
+                        & (p \land q) \rightarrow r \\
+                        & \neg r \\
+                        & q \\
+                        \cline{2-2}
+                        \therefore & \neg p
+                    \end{array}
+                \]
+            \begin{proof}
+                \[
+                    \begin{array}{ l l l }
+                        1. & \neg r & Hypothesis \\
+                        2. & (p \land q) \rightarrow r & Hypothesis \\
+                        3. & \neg (p \land q) & Modus\ Pollens,\ 1,\ 2 \\
+                        4. & \neg p \lor \neg q & De\ Morgan's\ Laws,\ 3 \\
+                        5. & q & Hypothesis \\
+                        6. & \neg P & Identity\ Laws \\
+                    \end{array}    
+                \]
+            \end{proof}
+        \end{enumerate}
+    \end{enumerate}
+    b. Solve the following questions from the Discrete Math zyBook:
+    \begin{enumerate}
+        \item Excercise 1.13.3, section b\\
+        \\
+        Show an argument with quantified statements is invalid.\\
+        \\
+        Determine whether each argument is valid. If the argument is valid, give a proof using the laws of logic. If the argument is invalid, give values for the predicates P and Q over the domain {a, b} that demonstrate the argument is invalid.\\
+        \begin{enumerate}
+            \item 
+                \[
+                    \begin{array}{ r l }
+                        & \exists x\; P(x) \land \exists x\; Q(x) \\
+                        \cline{2-2}
+                        \therefore & \exists x\; (P(x) \land Q(x))
+                    \end{array}
+                \]
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item \ \\
+            If the truth table of the argument is as follows:\\
+            \\
+            \begin{center}
+                \begin{tabular}{| c | c | c |}
+                    \hline
+                    \ & P(x) & Q(x) \\
+                    \hline
+                    a & T & F \\
+                    \hline
+                    b & F & T \\
+                    \hline
+                    \end{tabular}
+            \end{center}
+            \vspace{0.2in}
+            Then the hypothesis is true and the conclusion is false, the argument is invalid.
+        \end{enumerate}
+        \item Excercise 1.13.5, sections d, e\\
+        \\
+        Determine and prove whether an argument in English is valid or invalid.\\
+        \\
+        Prove whether each argument is valid or invalid. First find the form of the argument by defining predicates and expressing the hypotheses and the conclusion using the predicates. If the argument is valid, then use the rules of inference to prove that the form is valid. If the argument is invalid, give values for the predicates you defined for a small domain that demonstrate the argument is invalid.\\
+        The domain for each problem is the set of students in a class.
+        \begin{enumerate}
+            \item 
+                \[
+                    \begin{array}{ r l }
+                        & Every\ student\ who\ missed\ class\ got\ a\ detention. \\
+                        & Penelope\ is\ a\ student\ in\ the\ class. \\
+                        & Penelope\ did\ not\ missed\ class. \\
+                        \cline{2-2}
+                        & Penelope\ did\ not\ get\ a\ detention.
+                    \end{array}
+                \]
+            \item 
+                \[ 
+                    \begin{array}{ r l }
+                        & Every\ student\ who\ missed\ class\ or\ got\ a\ detention\ did\ not\ get\ a\ A. \\
+                        & Penelope\ is\ a\ student\ in\ the\ class. \\
+                        & Penelope\ got\ an\ A. \\
+                        \cline{2-2}
+                        & Penelope\ did\ not\ get\ a\ detention.
+                    \end{array}
+                \]
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item \ \\
+            \begin{center}
+                \textit{U: The set of students in the class}\\
+                \textit{P(x):  The student x missed class}\\
+                \textit{Q(x): The student x got a detention}\\
+                \textit{R(x): The student x got an A}\\
+            \end{center}
+            Therefore:
+                \[
+                    \begin{array}{ r l }
+                        & \forall x \; (P(x) \rightarrow Q(x)) \\
+                        & Penelope \in U \\
+                        & \neg P(Penelope) \\
+                        \cline{2-2}
+                        \therefore & \neg Q(Penelope)
+                    \end{array}
+                \]
+                \vspace{0.1in}
+                \[
+                    \begin{array}{ l l l }
+                        1. & \forall x \; (P(x) \rightarrow Q(x)) & Hypothesis \\
+                        2. & Penelope \in U & Penelope\ is\ an\ element\ in\ U\\
+                        3. & P(Penelope) \rightarrow Q(Penelope) & Universal\ Instantiation,\ 1,\ 2\\
+                        4. & \neg P(Penelope) & Hypothesis \\
+                    \end{array}
+                \]
+                \\
+                If $\neg P(Penelope) = T$, all the hypotheses and inferences are true, and $Q(Penelope)$ could be either T or F. \\
+                If $Q(Penelope) = T$, the conclusion $\neg Q(Penelope) = F$, the argument is invalid.
+                \item \ \\
+                    \[
+                        \begin{array}{ r l }
+                            & \forall x \; ((P(x) \lor Q(x)) \rightarrow \neg R(x))\\
+                            & Penelope \in U\\
+                            & R(Penelope)\\
+                            \cline{2-2}
+                            \therefore & \neg Q(Penelope)
+                        \end{array}    
+                    \]
+                The argument is valid.
+                \begin{proof}
+                    \[
+                        \begin{array}{ l l l }
+                            1. & \forall x \; ((P(x) \lor Q(x)) \rightarrow \neg R(x)) & Hypothesis \\
+                            2. & Penelope \in U & Penelope\ is\ an\ element\ in\ U. \\
+                            3. & \forall x \; ((P(Penelope) \lor Q(Penelope)) \rightarrow \neg R(Penelope)) & Universal\ Instantiation,\ 1,\ 2\\
+                            4. & R(Penelope) & Hypothesis \\
+                            5. & \neg (P(Penelope) \lor Q(Penelope)) & Modus\ Tollens,\ 3,\ 4 \\
+                            6. & \neg P(Penelope) \land \neg Q(Penelope) & De\ Morgan's\ Laws,\ 5 \\
+                            7. & \neg Q(Penelope) & Simplification,\ 6 \\
+                        \end{array}    
+                    \]
+                \end{proof}
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve Exercise 2.4.1, section d; Exercise 2.4.3, section b, from the Discrete Math zyBook:\\
+    \\
+    \begin{enumerate}
+        \item Excercise 2.4.1, section d\\
+        \\
+        Proving statements about odd and even integers with direct proofs.\\
+        \\
+        Each statement below involves odd and even integers. An odd integer is an integer 
+        that can be expressed as $2k+1$, where $k$ is an integer. 
+        An even integer is an integer that can be expressed as $2k$, where $k$ is an integer.\\
+        Prove each of the following statements using a direct proof.\\
+        \begin{enumerate}
+            \item The product of two odd integers is an odd integer.
+        \end{enumerate}
+        \vspace{0.2in}
+        \textbf{Solution}
+        \begin{proof}
+            Assume: a and b are two odd integers.\\
+            \\
+            Since a and b are two odd integers, $a =2m+1, b = 2n+1$, for some integers m and n.\\
+            \\
+            \begin{align}
+                ab &= (2m+1)*(2n+1)\\
+                & = 2(mn+m+n)+1
+            \end{align}
+            \\
+            Since m and n are integers, $mn+m+n$ is also an integer.\\
+            \\
+            Since $ab = 2(mn+m+n)+1$\\
+            where $mn+m+n$ is an integer,\\
+            $ab$ is odd.
+        \end{proof}
+        \item Excercise 2.4.3, section b\\
+        \\
+        Proving algebraic statements with direct proofs.\\
+        \\
+        Determine whether the statement is true or false. If the statement is true, give a proof. If the statement is false, give a counterexample.\\
+        \begin{enumerate}
+            \item If $x+y$ is an even integer, then $x$ and $y$ are both even integers.
+        \end{enumerate}
+        \vspace{0.2in}
+        \textbf{Solution}
+        \\
+        The statement is \textbf{false}.\\
+        The simplist counterexample could be when $x = y = 1, x + y = 2$, 2 is an even number while 1 is odd.
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve Exercise 2.5.1, section d; Exercise 2.5.4, sections a, b; Exercise 2.5.5, section c, from the Discrete Math zyBook:\\
+    \\
+    \begin{enumerate}
+        \item Proof by contrapositive of statements about odd and even integers.\\
+        \\
+        Prove each statement by contrapositive
+        \begin{enumerate}
+            \item For every integer $n$, if $n-2n^2+7$ is even, then $n$ is odd.
+        \end{enumerate}
+        \vspace{0.1in}
+        \textbf{Solution}
+        \begin{proof}
+            \textbf{Proof by contrapositive}\\
+            \\
+            Assume $n$ is even.\\
+            \\
+            Since $n$ is an even number, $n = 2k$, for some integers $k$.\\
+            \begin{align}
+                n-2n^2+7 & = 2k - 2(2k)^2 + 7\\
+                & = -4k^2 + 2k + 6 + 1\\
+                & = 2(k + 6 -2k^2) + 1
+            \end{align}
+            Since $k$ is an integer, $k + 6 - 2k^2$ is also an integer.\\
+            \\
+            Since $n - 2n^2 + 7 = 2(k + 6 - 2k^2)$\\
+            where $k + 6 - 2k^2$ is an integer\\
+            $n - n^2 +7$ is odd.\\
+            \\
+            Therefore, $n - n^2 +7$ is even.
+        \end{proof}
+        \item Proof by contrapositive of algebraic statements.\\
+        \\
+        Prove each statement using a direct proof or proof by contrapositive. One method may be much easier than the other.
+        \begin{enumerate}
+            \item The product of any integer and an even integer is even.
+            \item If $p > 2$ and $p$ is a prime number, then $p$ is odd.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item 
+            \begin{proof}
+                \textbf{Direct Proof}\\
+                \\
+                Let $k$ be an integer and $a$ be an even integer.\\
+                \\
+                Since $a$ is even, $a = 2m$, for some integers $m$.\\
+                \\
+                \begin{equation}
+                    a*k = 2mk
+                \end{equation}
+                Since $k$ and $m$ are both integers, $mk$ is also an integer.\\
+                \\
+                Since $a*k = 2mk$\\
+                where $mk$ is an integer\\
+                $a*k$ is even.
+            \end{proof}
+            \vspace{0.1in}
+            \item 
+            The statement is equivalent to $((p > 2) \land (p\ is\ a\ prime\ number)) \rightarrow (p\ is\ odd)$\\
+            The contrapositive statement of this statement is equivalent to:\\
+            $(((p\ is\ even) \land p > 2) \rightarrow (p\ is\ not\ a\ prime\ number))$           
+            \begin{proof}
+                \textbf{Proof by contrapositive}\\
+                \\
+                Assume $p$ is even and $p > 2$.\\
+                \\
+                Since $p$ is even, $p = 2k$, for some integers $k$\\
+                \\
+                Since $p = 2k$ and $k$ is an integer, $p$ can always be divided by 2\\
+                \\
+                Since $p > 2$, $p$ itself can not be 2\\
+                \\
+                Therefore, at least one multiplier except 1 and $p$ itself exists\\
+                \\
+                Therefore, $p$ is not a prime number\\
+                \\
+                Therefore, If $p > 2$ and $p$ is a prime number, then $p$ is odd.
+            \end{proof}
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Proving statements using a direct proof or by contrapositive.\\
+        \\
+        Prove each statement using a direct proof or proof by contrapositive. One method may be much easier than the other.\
+        \begin{enumerate}
+            \item For every non-zero number $x$, if $x$ is irrational, then $1/x$ is also irrational.
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{proof}
+            \textbf{Contrapositive}\\
+            \\
+            A number could either be rational or irrational, let $1/x$ be any non-zero rational number\\
+            \\
+            Since $1/x$ is rational, $1/x = a/b$, for some integers $a$ and $b$\\
+            \\
+            Since $1/x = a/b$, $x = b/a$\\
+            \\
+            Since $x = b/a$, $x$ is rational\\
+            \\
+            Therefore, For every non-zero number $x$, if $x$ is irrational, then $1/x$ is also irrational.
+        \end{proof}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve Exercise 2.6.6, sections c, d, from the Discrete Math zyBook:\\
+    \\
+    Proofs by contradiction.\\
+    Give a proof for each statement.\\
+    \begin{enumerate}
+        \item The average of three real numbers is greater than or equal to at least one of the numbers.
+        \item There is no smallest integer.
+    \end{enumerate}
+    \vspace{0.2in}
+    \textbf{Solution}
+    \begin{enumerate}
+        \item \ \\
+        \begin{proof}
+            Suppose there are three real numbers, $a$, $b$, and $c$, such that 
+            their average $p = \frac{a + b + c}{3}$\\
+            \\
+            And assume that:\\
+            \[
+            \left\{
+                \begin{array}{l}
+                    p < a \\
+                    p < b \\
+                    p < c \\
+                \end{array}    
+            \right.
+            \]
+            Therefore, \\
+            \[
+            \left\{
+                \begin{array}{l}
+                    3p < a + b + c \\
+                    p < \frac{a + b + c}{3}\\
+                \end{array}    
+            \right.
+            \]
+            Since $p < \frac{a + b + c}{3}$, it is inconsistent with the assumption that $p = \frac{a + b + c}{3}$\\
+            \\
+            Therefore, the average of three real numbers is greater than or equal to at least one of the numbers.
+        \end{proof}
+        \item \ \\
+        \begin{proof}
+            Assume that there is a smallest integer $x$\\
+            \\
+            Since $x$ is an integer, $x - 1$ is also an integer\\
+            \\
+            However, $x - 1 < x$\\
+            \\
+            It is inconsistent with the fact that $x$ is the smallest integer\\
+            \\
+            Therefore, there is no smallest interger.
+        \end{proof}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve Exercise 2.7.2, section b, from the Discrete Math zyBook:\\
+    \\
+    Proof by cases - even/odd integers and divisibility.\\
+    Prove that: If integers $x$ and $y$ have the same parity, then $x + y$ is even.\\
+    \\
+    \textbf{Solution}
+    \begin{proof}\ \\
+        \\
+        \textbf{Case 1}: $x$ and $y$ are both even.\\
+        \\
+        Let $x = 2m, y = 2n$, for some integers $m$ and $n$\\
+        \\
+        $x + y = 2m + 2n = 2(m + n)$\\
+        \\
+        Since $m$ and $n$ are both integers, $m + n$ is also an integer\\
+        \\
+        Therefore, $x + y$ is even.\\
+        \\\\
+        \textbf{Case 2}: $x$ and $y$ are both odd.\\
+        \\
+        Let $x = 2m + 1, y = 2n + 1$, for some integers $m$ and $n$\\
+        \\
+        $x + y = 2m + 1 + 2n + 1= 2(m + n + 2)$\\
+        \\
+        Since $m$ and $n$ are both integers, $m + n + 2$ is also an integer\\
+        \\
+        Therefore, $x + y$ is even.\\
+        \\\\
+        Therefore, If integers $x$ and $y$ have the same parity, then $x + y$ is even.
+     \end{proof}
+\end{homeworkProblem}
+
+\end{document}

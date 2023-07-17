@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.11)  14 JUL 2023 18:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.11)  15 JUL 2023 15:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/kw/Dropbox/Kunhua Huang/Obsidian/CSBridge2023/W2/hw2/kh4092_hw2_q5to9"
-(/Users/kw/Dropbox/Kunhua Huang/Obsidian/CSBridge2023/W2/hw2/kh4092_hw2_q5to9.tex
+**"/Users/kw/Dropbox/Kunhua Huang/Obsidian/Tandon_Bridge_2023_24week/W2/hw2/kh4092_hw2_q5to9"
+(/Users/kw/Dropbox/Kunhua Huang/Obsidian/Tandon_Bridge_2023_24week/W2/hw2/kh4092_hw2_q5to9.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -888,12 +888,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 641--664
 [10] (./kh4092_hw2_q5to9.aux) ) 
 Here is how much of TeX's memory you used:
  14875 strings out of 476025
- 305513 string characters out of 5790017
+ 305552 string characters out of 5790017
  1864388 words of memory out of 5000000
  35061 multiletter control sequences out of 15000+600000
  521449 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,12n,104p,492b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,12n,104p,505b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 Output written on kh4092_hw2_q5to9.pdf (10 pages, 184782 bytes).
 PDF statistics:

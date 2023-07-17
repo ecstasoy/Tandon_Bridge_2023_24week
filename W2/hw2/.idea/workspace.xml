@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6167865-e4f8-42c7-9092-16128da50743" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/kh4092_hw2_q5to9.log" beforeDir="false" afterPath="$PROJECT_DIR$/kh4092_hw2_q5to9.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kh4092_hw2_q5to9.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/kh4092_hw2_q5to9.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kh4092_hw2_q5to9.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/kh4092_hw2_q5to9.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tempCodeRunnerFile" beforeDir="false" afterPath="$PROJECT_DIR$/../tempCodeRunnerFile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tempCodeRunnerFile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../tempCodeRunnerFile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cpp_Prac_Programs/ch2/kh4092_pp1.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cpp_Prac_Programs/ch2/kh4092_pp2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cpp_Prac_Programs/ch2/kh4092_pp3.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cpp_Prac_Programs/ch2/kh4092_pp4.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cpp_Prac_Programs/ch2/kh4092_pp5.cpp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="1.1" />
+  </component>
+  <component name="ProjectId" id="2SfDj3miTjw4afXQWXpvQls24fp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6167865-e4f8-42c7-9092-16128da50743" name="Changes" comment="" />
+      <created>1689528874258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689528874258</updated>
+      <workItem from="1689528875719" duration="48000" />
+      <workItem from="1689530729082" duration="5000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

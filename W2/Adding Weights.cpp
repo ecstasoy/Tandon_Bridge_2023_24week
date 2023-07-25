@@ -21,7 +21,7 @@ int main() {
     carriedOverPounds = sumOfOunces / OUNCES_PER_POUND;
     totalPounds = carriedOverPounds + item1Pounds + item2Pounds;
     
-    cout<<"The combined weight is "<<totalPounds<<" pounds and ";
+    cout<<"The combined weight is "<< totalPounds << " pounds and ";
     cout<<totalOunces<<" ounces"<<endl;
     
     return 0;

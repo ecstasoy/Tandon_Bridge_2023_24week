@@ -1,0 +1,497 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+
+
+\usetikzlibrary{automata,positioning}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{7}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newcommand{\hmwkTitle}{HW\ \#3}
+\newcommand{\hmwkDueDate}{July 30, 2023}
+\newcommand{\hmwkClass}{Tandon CS Bridge}
+\newcommand{\hmwkClassTime}{Extended 24-week}
+\newcommand{\hmwkClassInstructor}{Ratan Dey}
+\newcommand{\hmwkAuthorName}{\textbf{Kunhua Huang}}
+\newcommand{\hmwkNYUID}{kh4092}
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\, \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{
+    \vspace{0.1in}
+    \textmd{\hmwkAuthorName}\\
+    \text{\hmwkNYUID}
+}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newcommand\logeq{\mathrel{\raisebox{.66pt}{:}}\Leftrightarrow}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math zyBook:
+    \begin{enumerate}
+        \item Excercise 3.1.1, sections a-g \\
+        \\
+        Use the definitions for the sets given below to determine whether each statement is true or false:\\
+        \\
+        $A = \{ x \in Z: x\ is\ an\ integer\ multiple\ of\ 3 \}$\\
+        $B = \{ x \in Z: x\ is\ a\ perfect\ square\ \}$\\
+        $C = \{ 4, 5, 9, 10 \}$\\
+        $D = \{ 2, 4, 11, 14 \}$\\
+        $E = \{ 3, 6, 9 \}$\\
+        $F = \{ 4, 6, 16 \}$\\
+        \\
+        An integer $x$ is a perfect square if there is an integer $y$ such that $x = y ^ 2$.
+        \begin{enumerate}[a.]
+            \item $27 \in A$
+            \item $27 \in B$
+            \item $100 \in B$
+            \item $E \subseteq C\ or\ C \subseteq E$
+            \item $E \subseteq A$
+            \item $A \subset E$
+            \item $E \in A$
+        \end{enumerate}
+    
+        \textbf{Solution}
+        \begin{enumerate}[a.]
+            \item true
+            \item false
+            \item true
+            \item false
+            \item true
+            \item false
+            \item false
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.1.2, sections a-e\\
+        \\
+        Use the definitions for the sets given below to determine whether each statement is true or false:\\
+        \\
+        $A = \{ x \in \mathbb{Z}: x\ is\ an\ integer\ multiple\ of\ 3 \}$\\
+        $B = \{ x \in \mathbb{Z}: x\ is\ a\ perfect\ square\ \}$\\
+        $C = \{ 4, 5, 9, 10 \}$\\
+        $D = \{ 2, 4, 11, 14 \}$\\
+        $E = \{ 3, 6, 9 \}$\\
+        $F = \{ 4, 6, 16 \}$\\
+        \\
+        An integer $x$ is a perfect square if there is an integer $y$ such that $x = y ^ 2$.
+        \begin{enumerate}[a.]
+            \item $15 \subset A$
+            \item $\{15\} \subset A$
+            \item $\emptyset \subset C$
+            \item $D \subseteq D$
+            \item $\emptyset \in B$
+            \item $A\ is\ an\ infinite\ set$
+            \item $B\ is\ a\ finite\ set$
+            \item $|E| = 3$
+            \item $|E| = |F|$
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}[a.]
+            \item true
+            \item false
+            \item true
+            \item true
+            \item true
+            \item true
+            \item false
+            \item true
+            \item true
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.1.5, section b, d\\
+        \\
+        Express each set using set builder notation. Then if the set is finite, give its cardinality. Otherwise, indicate that the set is infinite.
+        \begin{enumerate}
+            \item $\{3,6,9,12,\dots\}$
+            \item $\{0,10,20,30,\dots,1000\}$
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $A = \{x \in \mathbb{Z} ^ +:\ x\ is\ an\ integer\ multiple\ of\ 3\}$
+            \item $A = \{x \in \mathbb{Z}:\ x\ is\ an\ integer\ multiple\ of\ 10\}$
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.2.1, sections a-k\\
+        \\
+        Let $X = \{1,\{1\}, \{1,2\},2,\{3\},4\}$. Which statements are true?
+        \begin{enumerate}
+            \item $2 \in X$
+            \item $\{2\} \subseteq X$
+            \item $\{2\} \in X$
+            \item $3 \in X$
+            \item $\{1,2\} \in X$
+            \item $\{1,2\} \subseteq X$
+            \item $\{2,4\} \subseteq X$
+            \item $\{2,4\} \in X$
+            \item $\{2,3\} \subseteq X$
+            \item $\{2,3\} \in X$
+            \item $|X| = 7$
+        \end{enumerate}
+
+        \textbf{Solution}\\
+        a, b, e, f, and g are true.
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve Exercise 3.2.4, section b from the Discrete Math zyBook.\\
+    \\
+    Let $A = \{1,2,3\}$. What is $\{X \in P(A):\; 2\in X\}$?\\
+
+    \textbf{Solution}\\
+    \\
+    $\{\emptyset, \{2\},\{1,2\},\{2,3\},\{1,2,3\}\}$
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math zyBook:\\
+    \begin{enumerate}
+        \item Excercise 3.3.1, sections c-e.\\
+        \\
+        Define the sets A, B, C, and D as follows:\\
+        \\
+        $A = \{-3,0,1,4,17\}$\\
+        $B = \{-12,-5,1,4,6\}$\\
+        $C = \{x \in \mathbb{Z}:\ x\ is\ odd\}$\\
+        $D = \{x \in \mathbb{Z}:\ x\ is\ positive\}$\\
+        For each of the following set expressions, if the corresponding set is finite, express the set using roster natation. Otherwise, indicate that the set is infinite.
+        \begin{enumerate}
+            \item $A \cap C$
+            \item $A \cup (B \cap C)$
+            \item $A \cap B \cap C$
+            \item $A \cup C$
+            \item $(A \cup B) \cap C$
+            \item $A \cup (C \cap D)$
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\{-3,1,17\}$
+            \item $\{-5.-3,0,1,4,17\}$
+            \item $\{1\}$
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.3.3, sections a, b, e, f\\
+        \\
+        Use the following definitions to express each union or intersection given. You can use roster or set builder notation in your responses, but no set operations, For each definition, $i \in \mathbb{Z} ^ +$\\
+        \\
+        $A _ i = \{i ^ 0, i ^ 1, i ^ 2\}$\\
+        $B _ i = \{x \in \mathbb{R}:\ -i <= x <= 1/i\}$\\
+        $C _ i = \{x \in \mathbb{R};\ -1 / i <= x <= 1/i\}$\\
+        \begin{enumerate}
+            \item $\bigcap_{i=2}^{5}A_i$
+            \item $\bigcup_{i=2}^{5}A_i$
+            \item $\bigcap_{i=1}^{100}B_i$
+            \item $\bigcup_{i=1}^{100}B_i$
+            \item $\bigcap_{i=1}^{100}C_i$
+            \item $\bigcup_{i=1}^{100}C_i$
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\{1\}$
+            \item $\{1,2,3,4,5,9,16,25\}$
+            \item $\{x \in \mathbb{R}:\; -1 <= x <= 1/100\}$
+            \item $\{x \in \mathbb{R}:\; -100 <= x <= 1\}$
+            \item $\{x \in \mathbb{R}:\; -1/100 <= x <= 1/100\}$
+            \item $\{x \in \mathbb{R}:\; -1 <= x <= 1\}$
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.3.4, sections b, d\\
+        \\
+        Use the set definitions $A = \{a,b\}$ and $B = \{b,c\}$ to express each set below. Use roster notation in your solutions.
+        \begin{enumerate}
+            \item $P(A \cup B)$
+            \item $P(A) \cup P(B)$
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item 
+            $A \cup B = \{a,b,c\}$\\
+            $P(A \cup B) = \{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\}$\\
+            \item 
+            $P(A) = \{\emptyset,\{a\},\{b\},\{a,b\}\}$\\
+            $P(B) = \{\emptyset,\{b\},\{c\},\{b,c\}\}$\\
+            $P(A) \cup P(B) = \{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{b,c\}\}$\\
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Descrete Math zyBook:\\
+    \begin{enumerate}
+        \item Excercise 3.5.1, sections b, c\\
+        \\
+        The sets A, B, and C are defined as follows:\\
+        \\
+        $A = \{tall,grande,venti\}$\\
+        $B = \{foam,non-foam\}$\\
+        $C = \{non-fat,whole\}$\\
+        \\
+        Use the definition for A, B, and C to answer the questions. Express the elements using n-tuple notation, not string notation.
+        \begin{enumerate}
+            \item Write an element from the set $B \times A \times C$.
+            \item Write the set $B \times C$ using roster notation.
+        \end{enumerate}
+
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\left(foam, tall, non-fat\right)$
+            \item $\{\left(foam,non-fat\right), \left(foam,whole\right),\left(non-foam,non-fat\right),\left(non-foam,whole\right)\}$
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.5.3, sections b, c, e\\
+        \\
+        Indicate which of the following statements are true.
+        \begin{enumerate}
+            \item $\mathbb{Z} ^ 2 \subseteq \mathbb{R} ^ 2$
+            \item $\mathbb{Z} ^ 2 \cap \mathbb{Z} ^ 3 = \emptyset$
+            \item For any three sets, A, B, and C, if $A \subseteq B$, then $A \times C \subseteq B \times C$
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item true
+            \item true
+            \item true
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.5.6, sections d, e\\
+        \\
+        Express the following sets using the roster method. Express the elements as strings, not n-tuples.
+        \begin{enumerate}
+            \item $\{xy:\; where\ x \in \{0\} \cup \{0\} ^ 2\ and\ y \in \{1\} \cup \{1\} ^ 2\}$
+            \item $\{xy:\; x \in \{aa,ab\}\ and\ y \in \{a\} \cup \{a\} ^ 2\}$
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\{01,011,001,0011\}$
+            \item $\{aaa,aaaa,aba,abaa\}$
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.5.7, sections c, f, g\\
+        \\
+        Use the following set definitions to specify each set in roster notation. Except where noted, express elements of Cartesian products as strings.\\
+        \\
+        $A = \{a\}$\\
+        $B = \{b,c\}$\\
+        $C = \{a,b,d\}$\\
+        \begin{enumerate}
+            \item $(A \times B) \cup (A \times C)$
+            \item $P(A \times B)$
+            \item $P(A) \times P(B)$. Use ordered pair notation for elements of the Cartesian product.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\{ab,ac\} \cup \{aa,ab,ad\}$\\
+            $\{abaa,abab,abad,acaa,acab,acad\}$
+            \item $\{\emptyset,ab,ac,abac\}$
+            \item $\{\emptyset,\{a\}\} \times \{\emptyset,\{b\},\{c\},\{b, c\}\}$\\
+            $\{\emptyset,\left(\{a\},\{b\}\right),\left(\{a\},\{c\}\right),\left(\{a\},\{b, c\}\right)\}$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math zyBook:\\
+    \begin{enumerate}
+        \item Excercise 3.6.2, sections b, c\\
+        \\
+        Use the set identities given in the table to prove the following new identities. Label each step in your proof with the set identity used to establish that step.
+        \begin{enumerate}
+            \item $(B \cup A) \cap (\bar{B} \cup A) = A$
+            \item $\overline{(A \cap \overline{B})} = \bar{A} \cup B$
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item
+            \begin{proof}
+                \[
+                    \begin{array}{ l l l }
+                        1. & \leftrightarrow A \cup (\bar{B} \cap B) & Associative\ Laws\\
+                        2. & \leftrightarrow A \cup \emptyset & Complement\ Laws\\
+                        3. & \leftrightarrow A & Domination\ Law
+                    \end{array}    
+                \]
+            \end{proof}
+            \item
+            \begin{proof}
+                \[
+                    \begin{array}{ l l l }
+                        1. & \leftrightarrow \bar{A} \cup \bar{\bar{B}} & De\ Morgan's\ Law\\
+                        2. & \leftrightarrow \bar{A} \cup B & Double\ Complement\ Law\\
+                    \end{array}
+                \]
+            \end{proof}
+        \end{enumerate}
+        \vspace{0.2in}
+        \item Excercise 3.6.3, sections b, d\\
+        \\
+        A set equation is not an identity if there are examples for the variables denoting the sets that cause the equation to be false. Show that each set equation given below is not a set identity.
+        \begin{enumerate}
+            \item $A - (B \cap A) = A$
+            \item $(B - A) \cup A = A$
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item 
+            \begin{proof}
+                Let $A = \{1, 2\}$, $B = \{1, 2, 3\}$,\\
+                $A - (B \cap A) = \emptyset \neq A$\\
+                It is not a set identity.
+            \end{proof}
+
+            \item 
+            \begin{proof}
+                Let $A = \{1, 2,\}$, $B = \{1, 2, 3\}$,\\
+                $(B - A) \cup A = \{1, 2, 3\} \neq A$\\
+                It is not a set identity.
+            \end{proof}
+        \end{enumerate}
+
+        \vspace{0.2in}
+        \item Excercise 3.6.4, sections b, c\\
+        \\
+        The set subtraction law states that $A - B = A \cap \bar{B}$. Use the set subtraction law as well as the other set identities given in the table to prove each of the following new identities. Label each step in your proof with the set identity used to establish that step.
+        \begin{enumerate}
+            \item $A \cap (B- A) = \emptyset$
+            \item $A \cup (B - A) = A \cup B$
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item 
+            \begin{proof}
+                \[
+                    \begin{array}{ l l l }
+                        1. & \leftrightarrow A \cap (B \cap \bar{A}) & Subtraction\ Law\\
+                        2. & \leftrightarrow (A \cap \bar{A}) \cap B & Associative\ Law\ \&\ Commutative\ Law \\
+                        3. & \leftrightarrow \emptyset \cap B & Complement\ Law\\
+                        4. & \leftrightarrow \emptyset & Domination\ Law\\
+                    \end{array}    
+                \]
+            \end{proof}
+            \item
+            \begin{proof}
+                \[
+                    \begin{array}{ l l l }
+                        1. & \leftrightarrow A \cup (B \cap \bar{A}) & Subtraction\ Law\\
+                        2. & \leftrightarrow (A \cup B) \cap (A \cup \bar{A}) & Distributive\ Law\\
+                        3. & \leftrightarrow (A \cup B) \cap U & Complement\ Laws\\
+                        4. & \leftrightarrow A \cup B & Identity\ Laws\\
+                    \end{array}    
+                \]
+            \end{proof}
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\end{document}

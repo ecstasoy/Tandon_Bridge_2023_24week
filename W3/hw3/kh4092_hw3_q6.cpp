@@ -12,53 +12,33 @@ int main()
     const double RATE_TWO = 0.25;
     const double RATE_THREE = 0.15;
 
-    int startHour, startMin, endHour, endMin, duration;
+    int startHour, startMin, duration;
     double cost;
     string weekday;
+    char colon;
 
-    cout << "Please enter the start hour of the call using 24-hour notation: ";
-    cin >> startHour;
+    cout << "Please enter the start time of the call using 24-hour notation (such as 13:30): ";
+    cin >> startHour >> colon >> startMin;
 
-    cout << "Please enter the start minute of the call: ";
-    cin >> startMin;
+    cout << "Please enter the duration of the call:  ";
+    cin >> duration;
 
-    cout << "Please enter the end hour of the call using 24-hour notation:  ";
-    cin >> endHour;
-
-    cout << "Please enter the end minute of the call: ";
-    cin >> endMin;
-
-    cout << "Please enter the day of the week when the call starts using Mo, Tu, We, Th, Sa, Su: ";
+    cout << "Please enter the day of the week when the call starts using Mo, Tu, We, Th, Fr, Sa, Su: ";
     cin >> weekday;
 
-    if (endHour < startHour)
+    if (weekday == "Sa" || weekday == "Su")
     {
-        duration = (endHour + 23 - startHour) * 60 + 60 - startMin + endMin;
+        cost = duration * 0.15;
     }
-    else if (endHour > startHour)
+    else if (startHour < 8 || startHour > 18)
     {
-        duration = (endHour - 1 - startHour) * 60 + 60 - startMin + endMin;
-    }
-    else
-    {
-        duration = endMin - startMin;
-    }
-
-    if (weekday != "Sa" && weekday != "Su")
-    {
-        if (startHour >= 8 && startHour < 18)
-        {
-            cost = duration * RATE_ONE;
-        }
-        else
-        {
-            cost = duration * RATE_TWO;
-        }
+        cost = duration * 0.25;
     }
     else
     {
-        cost = duration * RATE_THREE;
+        cost = duration * 0.40;
     }
+    
 
     cout << "The cost of your call is: $" << cost << endl;
 

@@ -45,8 +45,10 @@ int main()
      }
      else if (clubFlag == 'N' || clubFlag == 'n')
      {
+         discountPrice = basePrice;
          totalPrice = basePrice * (1 + taxRate / 100);
 
+         cout << "Price after discounts: " << discountPrice << endl;
          cout << "Total price: " << totalPrice << endl;
      }
      else

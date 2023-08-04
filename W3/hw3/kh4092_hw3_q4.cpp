@@ -23,24 +23,73 @@ int main()
 
     cin >> flag;
 
-    outputNum = (int) inputNum;
-
-    switch (flag)
+    if (int(inputNum) == inputNum)
     {
-        case FLOOR_ROUND:
-            cout << outputNum << endl;
-            break;
+        outputNum = inputNum;
+        cout << outputNum << endl;
+    }
+    else
+    {
+        outputNum = (int) inputNum;
+        switch (flag)
+        {
+            case FLOOR_ROUND:
+            if (inputNum < 0)
+            {
+                cout << outputNum - 1 << endl;
+                break;
+            }
+            else
+            {
+                cout << outputNum << endl;
+                break;
+            }
 
-        case CEILING_ROUND:
-            cout << outputNum + 1 << endl;
-            break;
+            case CEILING_ROUND:
+            if (inputNum < 0)
+            {
+                cout << outputNum << endl;
+                break;
+            }
+            else
+            {
+                cout << outputNum + 1 << endl;
+                break;
+            }
 
-        case ROUND:
-            cout << round(inputNum) << endl;
-            break;
+            case ROUND:
+            {
+                if (inputNum < 0)
+                {
+                    if (outputNum - inputNum < 0.5)
+                    {
+                        cout << outputNum << endl;
+                        break;
+                    }
+                    else
+                    {
+                        cout << outputNum - 1 << endl;
+                        break;
+                    }             
+                }
+                else
+                {
+                    if (inputNum - outputNum < 0.5)
+                    {
+                        cout << outputNum << endl;
+                        break;
+                    }
+                    else
+                    {
+                        cout << outputNum + 1 << endl;
+                        break;
+                    }
+                }
+            }
 
-        default:
-            cout << "Invalid input." << endl;
+            default:
+                cout << "Invalid input." << endl;
+        }
     }
 
     return 0;

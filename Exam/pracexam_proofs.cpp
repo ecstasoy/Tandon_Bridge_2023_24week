@@ -1,8 +1,8 @@
 /*
 *  Let a, b be odd integers
 *  Since a, b are odd, a = 2n+1, b = 2m+1, for some integer m and n
-*  a + b = 2(m+n) + 1
-*  Since m+n is also an integer, a + b is odd
+*  a * b = 2(mn+m+n) + 1
+*  Since mn+m+n is also an integer, a * b is odd
 */
 
 /*

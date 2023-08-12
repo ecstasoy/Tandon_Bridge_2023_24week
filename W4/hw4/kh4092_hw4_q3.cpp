@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int num, power, countDigit = 0;
+    int num, power = 1, countDigit = 0;
 
     cout << "Enter decimal number: " << endl;
     cin >> num;

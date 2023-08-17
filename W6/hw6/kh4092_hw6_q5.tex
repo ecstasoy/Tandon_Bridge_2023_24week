@@ -1,0 +1,159 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+
+
+\usetikzlibrary{automata,positioning}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{5}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newcommand{\hmwkTitle}{HW\ \#6}
+\newcommand{\hmwkDueDate}{August 18, 2023}
+\newcommand{\hmwkClass}{Tandon CS Bridge}
+\newcommand{\hmwkClassTime}{Extended 24-week}
+\newcommand{\hmwkClassInstructor}{Ratan Dey}
+\newcommand{\hmwkAuthorName}{\textbf{Kunhua Huang}}
+\newcommand{\hmwkNYUID}{kh4092}
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\, \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{
+    \vspace{0.1in}
+    \textmd{\hmwkAuthorName}\\
+    \text{\hmwkNYUID}
+}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newcommand\logeq{\mathrel{\raisebox{.66pt}{:}}\Leftrightarrow}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Use the definition of $\theta$ in order to show the following:
+    \begin{enumerate}
+        \item $5n^3+2n^2+3n=\theta(n^3)$
+        \item $\sqrt[2]{7n^2+2n-8}=\theta(n)$
+    \end{enumerate}
+    \textbf{Solution}
+    \begin{enumerate}
+        \item 
+        \begin{proof}
+            For the lower bound, when $C_1=4$, for $n\geq0$, \\
+            $5n^3\leq5n^3+2n^2+3n$\\
+            For the upper bound,\\
+            $5n^3+2n^2+3n\leq6n^3$, when $C_2=6$, for $n\geq3$.\\
+            $C_1\cdot g(n)\leq5n^3+2n^2+3n\leq C_2\cdot g(n)$\\
+            $\leftrightarrow 4n^3\leq5n^3+2n^2+3n\leq 6n^3$\\
+            $5n^3+2n^2+3n=\theta(n^3)$
+        \end{proof}
+        \item 
+        \begin{proof}
+            For $n\geq 4$, $\sqrt[2]{n^2}=\sqrt[2]{7}n\leq \sqrt[2]{7n^2+2n-8}$\\
+            $C_1=\sqrt[2]{7}$\\
+            For the upper bound, when $C_2=\sqrt[2]{7}+1$, for $n \geq 0$,\\
+            $\sqrt[2]{7n^2+2n-8}\leq (\sqrt[2]{7}+1)n$\\
+            $C_1\cdot g(n)\leq\sqrt[2]{7n^2+2n-8}\leq C_2\cdot g(n)$\\
+            $\leftrightarrow \sqrt[2]{7}n\leq \sqrt[2]{7n^2+2n-8}\leq (\sqrt[2]{7}+1)n$\\
+            $\sqrt[2]{7n^2+2n-8}=\theta(n)$
+        \end{proof}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\end{document}

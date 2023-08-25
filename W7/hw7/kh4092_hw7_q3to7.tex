@@ -1,0 +1,372 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+
+
+\usetikzlibrary{automata,positioning}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{3}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newcommand{\hmwkTitle}{HW\ \#7}
+\newcommand{\hmwkDueDate}{August 25, 2023}
+\newcommand{\hmwkClass}{Tandon CS Bridge}
+\newcommand{\hmwkClassTime}{Extended 24-week}
+\newcommand{\hmwkClassInstructor}{Ratan Dey}
+\newcommand{\hmwkAuthorName}{\textbf{Kunhua Huang}}
+\newcommand{\hmwkNYUID}{kh4092}
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\, \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{
+    \vspace{0.1in}
+    \textmd{\hmwkAuthorName}\\
+    \text{\hmwkNYUID}
+}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newcommand\logeq{\mathrel{\raisebox{.66pt}{:}}\Leftrightarrow}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    \begin{enumerate}
+        \item Solve Exercise 8.2.2, section b from the Discrete Math ZyBook.
+        \\
+        Give complete proofs for the growth rates of the polynomials below. You should provide specific values for $C$ and $n_0$ and prove algebraically that the functions satisfy the definitions for $\theta$ and $\omega$.
+        \begin{enumerate}
+            \item $f(n)=n^3+3n^2+4$
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item 
+            \begin{proof}
+                For the upper bound, when $C_1=4$, for $n\geq2$,\\
+                $f(n)=n^3+3n^2+4<4n^3$\\
+                $\leftrightarrow f(n)=n^3+3n^2+4=O(n^3)$\\
+                For the lower bound, when $C_2=1$, for $\geq1$,\\
+                $f(n)=n^3+3n^2+4<n^3$\\
+                $\leftrightarrow f(n)=n^3+3n^2+4=\omega(n^3)$\\
+                Therefore, $f(n)=n^3+3n^2+4=\theta(n^3)$
+            \end{proof}
+        \end{enumerate}
+        \item Solve Excercise 8.3.5, sections a-e from the Discrete Math ZyBook.
+        \\
+        The algorithm below makes some changes to an input sequence of numbers.\\
+        \begin{enumerate}
+            \item Describe in English how the sequence of numbers is changed by the algorithm.
+            \item What is the total number of times that the lines "i := i + 1" or "j := j - 1" are executed on a sequence of length n? Does your answer depend on the actual values of the numbers in the sequence or just the length of the sequence? If so, describe the inputs that maximize and minimize the number of times the two lines are executed.
+            \item What is the total number of times that the swap operation is executed? Does your answer depend on the actual values of the numbers in the sequence or just the length of the sequence? If so, describe the inputs that maximize and minimize the number of times the swap is executed.
+            \item Give an asymptotic lower bound for the time complexity of the algorithm. Is it important to consider the worst-case input in determining an asymptotic lower bound on the time complexity of the algorithm?
+            \item Give a matching upper bound for the time complexity of the algorithm.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item When the main loop continues as $i<j$, the first inner loop increments i until an element $a_i\geq p$ is found or $i = j$, the second inner loop decrements j until an element $a_j<p$ is found or $i = j$. if $i < j$, $a_i$ and $a_j$ is reversed. When the main loop exits, the original sequence is rearranged so that all elements smaller than $p$ appear before all elements greater than or equal to $p$.
+            \item The lines "i := i + 1" or "j := j - 1" on a sequence of length $n$ are executed $n-1$ times independent of the actual values of the numbers in the sequence.
+            \item The swap operations are excecuted at least 0 times (when it is already arranged as the algorithm expects) and at most $n/2$ (when n is even) or $(n-1)/2$ times (when n is odd), when it is arranged as oppose to what the algorithm expects and there are equal numbers of elements on both sides.
+            \item The asymptotic lower bound for the time complexity of the algorithm is $\Omega(n)$. It is not important to consider worst-case because in Big-$\Omega$ analysis, the focus is often on the general case or the average-case lower bound, to get an idea of how well an algorithm performs on an "average" or "random" input.
+            \item $O(n)$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math ZyBook:
+    \begin{enumerate}
+        \item Excercise 5.1.2, sections b, c
+        \\
+        Consider the following definitions for sets of characters:
+        \begin{enumerate}[1]
+            \item $Digits =  \{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 \}$
+            \item $Letters = \{ a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z \}$
+            \item $Special\ characters = \{ *, \&, \$, \# \}$
+        \end{enumerate}
+        Compute the number of passwords that satisfy the given constraints.
+        \begin{enumerate}
+            \item Strings of length 7, 8, or 9. Characters can be special characters, digits, or letters.
+            \item Strings of length 7, 8, or 9. Characters can be special characters, digits, or letters. The first character cannot be a letter.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $40^7+40^8+40^9$
+            \item $14\times(40^6+40^7+40^8)$
+        \end{enumerate}
+        \item Excercise 5.3.2, section a
+        \\
+        How many strings are there over the set $\{a, b, c\}$ that have length 10 in which no two consecutive characters are the same? For example, the string "abcbcbabcb" would count and the strings "abbbcbabcb" and "aacbcbabcb" would not count.
+        \\
+        \textbf{Solution}
+        $3\times 2^9$
+        \item Excercise 5.3.3, sections b, c
+        \\
+        License plate numbers in a certain state consists of seven characters. The first character is a digit (0 through 9). The next four characters are capital letters (A through Z) and the last two characters are digits. Therefore, a license plate number in this state can be any string of the form:
+        \begin{enumerate}
+            \item How many license plate numbers are possible if no digit appears more than once?
+            \item How many license plate numbers are possible if no digit or letter appears more than once?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $10\times 26^3 \times 9 \times 8$
+            \item $10\times 26\times 25\times 24\times 9\times 8$
+        \end{enumerate}
+        \item Excercise 5.2.3, sections a, b
+        \\
+        Let $B = \{0, 1\}$. $B^n$ is the set of binary strings with n bits. Define the set $E_n$ to be the set of binary strings with n bits that have an even number of 1's. Note that zero is an even number, so a string with zero 1's (i.e., a string that is all 0's) has an even number of 1's.
+        \begin{enumerate}
+            \item Show a bijection between $B^9$ and $E_{10}$. Explain why your function is a bijection.
+            \item What is $|E_{10}|$?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item
+            \[
+            f:B^9\rightarrow E_{10}\ f(x)=
+            \left\{
+                \begin{array}{  ll  }
+                    x+0, &x\in B_9\ and\ x\ has\ even\ numbers\ of\ 1\\
+                    x+1, &x\in B_9\ and\ x\ does\ not\ have\ even\ number\ of\ 1\\
+                \end{array}
+            \right.
+            \]
+            Every element in $B^9$ is the prefix of each unique element in $E_{10}$. The last digit of strings in $E_{10}$ is only determined by the prefix's property in which $f(x)$ maps $B^9$ to $E_{10}$ bijectively.
+            \item Since bijection, $|E_{10}| = |B^9| = 2^9$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math ZyBook:
+    \begin{enumerate}
+        \item Excercise 5.4.2, sections a, b
+        \\
+        At a certain university in the U.S., all phone numbers are 7-digits long and start with either 824 or 825.
+        \begin{enumerate}
+            \item 
+            How many different phone numbers are possible?
+            \item 
+            How many different phone numbers are there in which the last four digits are all different?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $2\times 10^7$
+            \item $2\times 10^4\times 9\times 8\times 7$
+        \end{enumerate}
+        \item Excercise 5.5.3, sections a-g
+        \\
+        How many 10-bit strings are there subject to each of the following restrictions?
+        \begin{enumerate}
+            \item No restrictions.
+            \item The string starts with 001.
+            \item The string starts with 001 or 10.
+            \item The first two bits are the same as the last two bits.
+            \item The string has exactly six 0's.
+            \item The string has exactly six 0's and the first bit is 1.
+            \item There is exactly one 1 in the first half and exactly three 1's in the second half.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $2^10$
+            \item $2^7$
+            \item $2^7+2^8$
+            \item $2^8$
+            \item $C(10,6)=\frac{10!}{6!4!}=210$
+            \item $C(9,6)=\frac{9!}{6!3!}=84$
+            \item $C(5,1)\times C(5,3)=\frac{5!}{1!4!}\times \frac{5!}{3!2!}=50$
+        \end{enumerate}
+        \item Exercise 5.5.5, section a
+        \\
+        There are 30 boys and 35 girls that try out for a chorus. The choir director will select 10 girls and 10 boys from the children trying out. How many ways are there for the choir director to make his selection?
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $C(35,10)\times C(30,10)=\frac{35!}{10!25!}\times \frac{30!}{10!20!}$
+        \end{enumerate}
+        \item Exercise 5.5.8, sections c-f
+        \\
+        This question refers to a standard deck of playing cards. If you are unfamiliar with playing cards, there is an explanation in "Probability of an event" section under the heading "Standard playing cards." A five-card hand is just a subset of 5 cards from a deck of 52 cards.
+        \begin{enumerate}
+            \item 
+            How many five-card hands are made entirely of hearts and diamonds?
+            \item How many five-card hands have four cards of the same rank?
+            \item 
+            A "full house" is a five-card hand that has two cards of the same rank and three cards of the same rank. For example, \{queen of hearts, queen of spades, 8 of diamonds, 8 of spades, 8 of clubs\}. How many five-card hands contain a full house?
+            \item 
+            How many five-card hands do not have any two cards of the same rank?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $C(26,5)=\frac{26!}{5!21!}$
+            \item $13\times 48=624$
+            \item $C(13,2)\times C(12,3)$
+            \item $C(13,5)\times 4^5$
+        \end{enumerate}
+        \item Exercise 5.6.6, sections a, b
+        \\
+        A country has two political parties, the Demonstrators and the Repudiators. Suppose that the national senate consists of 100 members, 44 of which are Demonstrators and 56 of which are Repudiators.
+        \begin{enumerate}
+            \item How many ways are there to select a committee of 10 senate members with the same number of Demonstrators and Repudiators?
+            \item 
+            Suppose that each party must select a speaker and a vice speaker. How many ways are there for the two speakers and two vice speakers to be selected?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $C(44,5)\times C(56,5)$
+            \item $P(44,2)\times P(56,2)$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math ZyBook:
+    \begin{enumerate}
+        \item Exercise 5.7.2, sections a, b
+        \\
+        A 5-card hand is drawn from a deck of standard playing cards.
+        \begin{enumerate}
+            \item How many 5-card hands have at least one club?
+            \item How many 5-card hands have at least two cards with the same rank?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $C(52,5)-C(39,5)$
+            \item $C(52,5)-C(13,5)\times 4^5$
+        \end{enumerate}
+        \item Exercise 5.8.4, sections a, b
+        \\
+        20 different comic books will be distributed to five kids.
+        \begin{enumerate}
+            \item 
+            How many ways are there to distribute the comic books if there are no restrictions on how many go to each kid (other than the fact that all 20 will be given out)?
+            \item 
+            How many ways are there to distribute the comic books if they are divided evenly so that 4 go to each kid?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $5^{20}$
+            \item $C(20,4)\times C(16,4)\times C(12,4)\times C(8, 4)\times C(4,4)\times P(5,5)$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    How many one-to-one functions are there from a set with five elements to sets with the wollowing number of elements?
+    \begin{enumerate}
+        \item 4
+        \item 5
+        \item 6
+        \item 7
+    \end{enumerate}
+    \textbf{Solution}
+    \begin{enumerate}
+        \item 0
+        \item $P(5,5)=120$
+        \item $P(6,5)=720$
+        \item $P(7,5)=2520$
+    \end{enumerate}
+\end{homeworkProblem}
+
+\end{document}

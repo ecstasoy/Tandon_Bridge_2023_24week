@@ -1,0 +1,302 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+\usepackage[utf8]{inputenc}
+
+
+\usetikzlibrary{automata,positioning}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{7}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newcommand{\hmwkTitle}{HW\ \#8}
+\newcommand{\hmwkDueDate}{September 1, 2023}
+\newcommand{\hmwkClass}{Tandon CS Bridge}
+\newcommand{\hmwkClassTime}{Extended 24-week}
+\newcommand{\hmwkClassInstructor}{Ratan Dey}
+\newcommand{\hmwkAuthorName}{\textbf{Kunhua Huang}}
+\newcommand{\hmwkNYUID}{kh4092}
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\, \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{
+    \vspace{0.1in}
+    \textmd{\hmwkAuthorName}\\
+    \text{\hmwkNYUID}
+}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newcommand\logeq{\mathrel{\raisebox{.66pt}{:}}\Leftrightarrow}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math ZyBook:
+    \begin{enumerate}
+        \item Exercise 6.1.5, sections b-d
+        \\
+        A 5-card hand is dealt from a perfectly shuffled deck of playing cards. What is the probability of each of the following events?
+        \begin{enumerate}
+            \item What is the probability that the hand is a three of a kind?.
+            \item What is the probability that all 5 cards have the same suit?
+            \item What is the probability that the hand is a two of a kind? A two of a kind has two cards of the same rank (called the pair). Among the remaining three cards, not in the pair, no two have the same rank and none of them have the same rank as the pair.            
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\frac{\binom{13}{1}\times\binom{12}{2}\times \binom{4}{3}\times \binom{4}{1}\times \binom{4}{1}}{\binom{52}{5}}=\frac{13\times 66\times 4\times 4\times 4}{2598960}=0.0211$
+            \item $\frac{\binom{4}{1}\times \binom{13}{5}}{\binom{52}{5}}=\frac{4\times 1287}{2598960}=0.00198$
+            \item $\frac{\binom{13}{1}\times \binom{12}{3}\times \binom{4}{2}\times \binom{4}{1}^3}{\binom{52}{5}}=0.0325$
+        \end{enumerate}
+        \item Excercise 6.2.4, sections a-d
+        \\
+        A 5-card hand is dealt from a perfectly shuffled deck of playing cards. What is the probability of each of the following events?
+        \begin{enumerate}
+            \item 
+            The hand has at least one club.
+            \item The hand has at least two cards with the same rank.
+            \item 
+            The hand has exactly one club or exactly one spade.
+            \item The hand has at least one club or at least one spade.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $1-\frac{\binom{39}{5}}{\binom{52}{5}=\frac{575757}{2598960}=0.7785}$
+            \item $1-\frac{\binom{13}{5}\times \binom{4}{1}^5}{\binom{52}{5}}=0.4929$
+            \item $\frac{\binom{13}{1}\times \binom{39}{4}}{\binom{52}{5}}+ \frac{\binom{13}{1}\times \binom{39}{4}}{\binom{52}{5}} - \frac{\binom{13}{1}^2\times \binom{26}{3}}{\binom{52}{5}}=0.6538$
+            \item $1-\frac{\binom{26}{5}}{\binom{52}{5}}=0.9745$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math ZyBook:
+    \begin{enumerate}
+        \item Exercise 6.3.2, sections a-e
+        \\
+        The letters ${a, b, c, d, e, f, g}$ are put in a random order. Each permutation is equally likely. Define the following events:\\
+        \\
+        A: The letter b falls in the middle (with three before it and three after it)\\
+        B: The letter c appears to the right of b, although c is not necessarily immediately to the right of b. For example, "agbdcef" would be an outcome in this event.\\
+        C: The letters "def" occur together in that order (e.g. "gdefbca")
+        \begin{enumerate}
+            \item 
+            Calculate the probability of each individual event. That is, calculate $p(A)$, $p(B)$, and $p(C)$
+            \item What is $p(A|C)$
+            \item What is $p(B|C)$
+            \item What is $p(A|B)$
+            \item Which pairs of events among A, B, and C are independent?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $p(A)=\frac{P(6,3)\times P(3,3)}{P(7,7)}=\frac{720}{5040}=\frac{1}{7}$\\
+            $p(B)=\frac{1}{2}$\\
+            $p(C)=\frac{P(5,5)}{P(7,7)}=\frac{1}{42}$
+            \item $p(A|C)=\frac{p(A\bigcap C)}{p(C)}=\frac{\frac{3!+3!}{P(7,7)}}{\frac{1}{42}}=\frac{1}{10}$
+            \item $p(B|C)=\frac{p(B\bigcap C)}{p(C)}=\frac{\frac{5!\times \frac{1}{2}}{P(7,7)}}{\frac{1}{42}}=\frac{1}{2}$
+            \item $p(A|B)=\frac{p(A\bigcap B)}{p(B)}=\frac{\frac{P(3,1)\times P(5,5)}{P(7,7)}}{\frac{1}{2}}=\frac{1}{7}$
+            \item  B and C, A and B are independent.
+        \end{enumerate}
+        \item Exercise 6.3.6, sections b, c
+        \\
+        A biased coin is flipped 10 times. In a single flip of the coin, the probability of heads is 1/3 and the probability of tails is 2/3. The outcomes of the coin flips are mutually independent. What is the probability of each event?
+        \begin{enumerate}
+            \item The first 5 flips come up heads. The last 5 flips come up tails.
+            \item The first flip comes up heads. The rest of the flips come up tails.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $(1/3)^5\times (2/3)^5=\frac{32}{3^{10}}$
+            \item $1/3\times (2/3)^9=\frac{512}{3^{10}}$
+        \end{enumerate}
+        \item Exercise 6.4.2, section a
+        \\
+        Assume that you have two dice, one of which is fair, and the other is biased toward landing on six, so that 0.25 of the time it lands on six, and 0.15 of the time it lands on each of 1, 2, 3, 4 and 5. You choose a die at random, and roll it six times, getting the values 4, 3, 6, 6, 5, 5. What is the probability that the die you chose is the fair die? The outcomes of the rolls are mutually independent.\\
+        \textbf{Solution}
+        \begin{enumerate}
+            \item Let A be the event that a die gets values 4, 3, 6, 6, 5, 5 in a six-time roll, B be the event that the die is the fair die.
+            \\
+            $p(B|A)=\frac{p(A|B)\times p(B)}{p(A|B)\times p(B)+p(A|\bar{B})\times p(\bar{B})}=\frac{\frac{1}{6^6}\times \frac{1}{2}}{\frac{1}{6^6}\times \frac{1}{2}+0.15^4\times 0.25^2\times \frac{1}{2}}=0.4038$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math ZyBook:
+    \begin{enumerate}
+        \item Exercise 6.5.2, sectionsc a, b
+        \\
+        A hand of 5 cards is dealt from a perfectly shuffled deck of playing cards. Let the random variable A denote the number of aces in the hand.
+        \begin{enumerate}
+            \item What is the range of A?
+            \item Give the distribution over the random variable A.
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $\{0, 1, 2, 3, 4\}$
+            \item $\{(0, \frac{\binom{4}{0}\times \binom{48}{5}}{\binom{52}{5}}),(1, \frac{\binom{4}{1}\times \binom{48}{4}}{\binom{52}{5}}),(2, \frac{\binom{4}{2}\times \binom{48}{3}}{\binom{52}{5}}),(3, \frac{\binom{4}{3}\times \binom{48}{2}}{\binom{52}{5}})(4, \frac{\binom{4}{4}\times \binom{48}{1}}{\binom{52}{5}})\}$
+        \end{enumerate}
+        \item Exercise 6.6.1, section a
+        \\
+        Two student council representatives are chosen at random from a group of 7 girls and 3 boys. Let G be the random variable denoting the number of girls chosen. What is E[G]?\\
+        \textbf{Solution}
+        \\
+        \\
+        $E[G](0\times \frac{\binom{3}{2}}{\binom{10}{2}})+(1\times \frac{\binom{7}{1}\times \binom{3}{1}}{\binom{10}{2}})+(2\times \frac{\binom{7}{2}}{\binom{10}{2}})=\frac{7}{5}$
+        \item Exercise 6.6.4, sections a, b
+        \begin{enumerate}
+            \item A fair die is rolled once. Let X be the random variable that denotes the square of the number that shows up on the die. For example, if the die comes up 5, then X = 25. What is E[X]?
+            \item 
+            A fair coin is tossed three times. Let Y be the random variable that denotes the square of the number of heads. For example, in the outcome HTH, there are two heads and Y = 4. What is E[Y]?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $E[X]=(1+2^2+3^2+4^2+5^2+6^2)\times \frac{1}{6}=\frac{91}{6}$
+            \item $E[Y]=0\times \frac{1}{8}+1\times \frac{3}{8}+2\times \frac{3}{8}+3\times \frac{1}{8}=\frac{3}{2}$
+        \end{enumerate}
+        \item Exercise 6.7.4, section a
+        \\
+        A class of 10 students hang up their coats when they arrive at school. Just before recess, the teacher hands one coat selected at random to each child. What is the expected number of children who get his or her own coat?\\
+        \\
+        \textbf{Solution}
+        \\
+        $E(x)=1$
+    \end{enumerate}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Solve the following questions from the Discrete Math Zybook:
+    \begin{enumerate}
+        \item Exercise 6.8.1, sections a-d
+        \\
+        The probability that a circuit board produced by a particular manufacturer has a defect is 1\%. You can assume that errors are independent, so the event that one circuit board has a defect is independent of whether a different circuit board has a defect.
+        \begin{enumerate}
+            \item What is the probability that out of 100 circuit boards made exactly 2 have defects?
+            \item What is the probability that out of 100 circuit boards made at least 2 have defects?
+            \item 
+            What is the expected number of circuit boards with defects out of the 100 made?
+            \item Now suppose that the circuit boards are made in batches of two. Either both circuit boards in a batch have a defect or they are both free of defects. The probability that a batch has a defect is 1\%. What is the probability that out of 100 circuit boards (50 batches) at least 2 have defects? What is the expected number of circuit boards with defects out of the 100 made? How do your answers compared to the situation in which each circuit board is made separately?
+        \end{enumerate}
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $p=\binom{100}{2}\times 0.01^2\times 0.99^{98}$
+            \item $p=1-\binom{100}{0}\times 0.99^{100}\times \binom{100}{1}\times 0.01^1\times 0.99^{99}$
+            \item $E=0.01\times 100=1$
+            \item $p=1-\binom{100}{0}\times 0.99^{50}$\\
+            $E=50\times 0.01\times 2=1$
+        \end{enumerate}
+        \item Exercise 6.8.3, section b
+        \\
+        A gambler has a coin which is either fair (equal probability heads or tails) or is biased with a probability of heads equal to 0.3. Without knowing which coin he is using, you ask him to flip the coin 10 times. If the number of heads is at least 4, you conclude that the coin is fair. If the number of heads is less than 4, you conclude that the coin is biased.
+        \\
+        What is the probability that you reach an incorrect conclusion if the coin is biased?\\
+        \\
+        \textbf{Solution}
+        \begin{enumerate}
+            \item $p=1-\binom{10}{0}\times 0.7^10-\binom{10}{1}\times 0.3^1\times 0.7^9-\binom{10}{2}\times 0.3^2\times 0.7^8-\binom{10}{3}\times 0.3^3\times 0.7^7=0.3504$
+        \end{enumerate}
+    \end{enumerate}
+\end{homeworkProblem}
+
+\end{document}

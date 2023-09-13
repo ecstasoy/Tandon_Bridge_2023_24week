@@ -33,8 +33,8 @@ std::string* createWordsArray(std::string sentence, int& outWordsArrSize) {
 
     for (int i = 0; i < arrSize; ++i) {
         endPos = sentence.find_first_of(' ', startPos);
-            if (sentence.find_first_of(' ', startPos) == -1) endPos = sentence.length();
-        for (int j = startPos; j < endPos; ++j) wordStr += sentence[j];
+        if (sentence.find_first_of(' ', startPos) == -1) endPos = sentence.length();
+        wordStr = sentence.substr(startPos, endPos - startPos);
         startPos = endPos + 1;
         outArr[i] = wordStr;
         wordStr = "";

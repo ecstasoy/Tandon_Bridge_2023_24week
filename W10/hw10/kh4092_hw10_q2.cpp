@@ -6,11 +6,12 @@ void printArray(int* arr, int size);
 
 int main() {
     int arrSize, resArrSize = 0;
-    int* arr = new int[arrSize];
     int* outArr;
 
     std::cout << "Please enter the size of the array: " << std::endl;
     std::cin >> arrSize;
+    int* arr = new int[arrSize];
+    
     std::cout << "Please enter " << arrSize << " integers in the range of [0, " << arrSize << "]" <<" one by one (press enter after each entry): " << std::endl;
     for (int i = 0; i < arrSize; ++i) {
         std::cin>>arr[i];

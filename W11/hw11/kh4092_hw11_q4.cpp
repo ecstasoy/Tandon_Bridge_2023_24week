@@ -23,7 +23,7 @@ int lowestTotalCost(int arr[], int arrSize) {
     if (arrSize <= 1) return arr[arrSize - 1];
 
     int moveCost = lowestTotalCost(arr, arrSize - 1) + arr[arrSize - 1];
-    int jumpCost = lowestTotalCost(arr, arrSize - 2) + arr[arrSize - 2];
+    int jumpCost = lowestTotalCost(arr, arrSize - 2) + arr[arrSize - 1];
 
     if (moveCost < jumpCost) {
         return moveCost;

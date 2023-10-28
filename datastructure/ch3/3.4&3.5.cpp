@@ -54,10 +54,6 @@ std::list<int> combination(const std::list<int>& L1, const std::list<int>& L2) {
     return res;
 }
 
-void std::list::splice(iterator position, List<T> lst) {
-
-}
-
 int main() {
     std::list<int> L1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30};
     std::list<int> L2 = {3, 4, 5, 6, 7, 8, 9};
